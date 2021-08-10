@@ -3,8 +3,9 @@
 This action evaluate the overall status of a job considering the job status and the test results. The output provides a status as string and color.
 
 ## Inputs
-
-* `test_report_conclusion`: Conclusion drawn by the test report action. (**Required**)
+* `job_status`: Provide the current job status (default: `${{ job.status }`) **Required**
+* `test_report_conclusion`: Conclusion drawn by the test report action (default: `''`) **Required**
+* `ignore_test_report`: Ignore the test report in evaluation (default: `false`)
 
 ## Outputs
 
@@ -16,6 +17,7 @@ This action evaluate the overall status of a job considering the job status and 
 ```yaml
 uses: kaisalmen/evaluate-overall-status-action@latest
 with:
+  job_status: ${{ job.status }}
   test_report_conclusion: ${{ steps.test_report.outputs.conclusion }}
 ```
 

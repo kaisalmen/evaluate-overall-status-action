@@ -45,7 +45,7 @@ jobs:
       if: ${{ always() }}
       uses: kaisalmen/evaluate-overall-status-action@latest
       with:
-        job_status: "${{ job.status }}"
+        job_status: "success"
         test_report_conclusion: ""
     - name: Notify Test Report Error
       if: ${{ always() }}
@@ -61,7 +61,7 @@ jobs:
       if: ${{ always() }}
       uses: kaisalmen/evaluate-overall-status-action@latest
       with:
-        job_status: "${{ job.status }}"
+        job_status: "success"
         test_report_conclusion: "sausage"
     - name: Notify Report Wrong
       if: ${{ always() }}
