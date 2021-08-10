@@ -2,7 +2,6 @@ name: Slack Test
 
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   build:

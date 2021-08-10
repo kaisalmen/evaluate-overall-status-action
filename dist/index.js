@@ -6290,7 +6290,7 @@ async function run() {
     try {
         const jobStatus = core.getInput('job_status');
         const testReportConclusion = core.getInput('test_report_conclusion');
-        const ignoreTestReport = core.getInput('ignore_test_report');
+        const ignoreTestReport = core.getInput('ignore_test_report') === 'true';
 
         console.log('Input:');
         console.log('Job Status: ' + jobStatus);
@@ -6335,7 +6335,7 @@ async function run() {
     }
     catch (error) {
         core.setOutput('overall_status', error.status);
-        core.setOutput('overall_status_color', '#FF0000');
+        core.setOutput('overall_status_color', '#4E0066');
         core.setFailed(error.message);
     }
 }
