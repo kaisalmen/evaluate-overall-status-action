@@ -12,7 +12,7 @@ async function run() {
         console.log('Test Report Conclusion: ' + testReportConclusion);
         console.log('Ignore Test Report: ' + ignoreTestReport);
 
-        if (!ignoreTestReport && testReportConclusion === undefined || testReportConclusion === '') {
+        if (!ignoreTestReport && (testReportConclusion === undefined || testReportConclusion === '')) {
             throw {
                 status: 'Execution Error: Unknown test conclusion',
                 message: 'Provided test report conclusion is empty'
