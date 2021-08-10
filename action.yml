@@ -1,0 +1,14 @@
+name: 'Evaluate Overall Status'
+description: 'This action evaluate the overall status of a job considering the job status and the test results. The output provides a status as string and color'
+inputs:
+  test_report_conclusion:
+    description: 'Conclusion drawn by the test report action'
+    required: true
+outputs:
+  overall_status:
+    description: 'The status as string'
+  overall_status_color:
+    description: 'Color describing the status'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
