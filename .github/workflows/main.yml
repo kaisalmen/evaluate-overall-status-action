@@ -12,7 +12,7 @@ jobs:
     - name: No Job Status
       id: job_eval_no_job_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         ignore_test_report: true
     - name: Notify No Job Status
@@ -27,7 +27,7 @@ jobs:
     - name: Wrong Job Status
       id: job_eval_wrong_job_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         job_status: "cheese"
         ignore_test_report: true
@@ -43,7 +43,7 @@ jobs:
     - name: Test Report Error
       id: job_eval_test_error
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         job_status: "success"
         test_report_conclusion: ""
@@ -59,7 +59,7 @@ jobs:
     - name: Report Wrong
       id: job_eval_test_report_wrong
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         job_status: "success"
         test_report_conclusion: "sausage"
@@ -75,7 +75,7 @@ jobs:
     - name: Job Success
       id: job_eval_job_success
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         job_status: "success"
         test_report_conclusion: "success"
@@ -91,7 +91,7 @@ jobs:
     - name: Job Failure
       id: job_eval_job_failure
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@latest
+      uses: kaisalmen/evaluate-overall-status-action@v1
       with:
         job_status: "failure"
         test_report_conclusion: "success"

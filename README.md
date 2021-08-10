@@ -15,7 +15,7 @@ This action evaluate the overall status of a job considering the job status and 
 ## Example usage
 
 ```yaml
-uses: kaisalmen/evaluate-overall-status-action@latest
+uses: kaisalmen/evaluate-overall-status-action@v1
 with:
   job_status: ${{ job.status }}
   test_report_conclusion: ${{ steps.test_report.outputs.conclusion }}
