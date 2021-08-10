@@ -1,9 +1,18 @@
 name: 'Evaluate Overall Status'
 description: 'This action evaluate the overall status of a job considering the job status and the test results. The output provides a status as string and color'
 inputs:
+  job_status:
+    description: 'Provide the current job status'
+    required: true
+    default: '${{ job.status }}'
   test_report_conclusion:
     description: 'Conclusion drawn by the test report action'
     required: true
+    default: ''
+  ignore_test_report:
+    description: 'Ignore the test report in evaluation'
+    required: false
+    default: 'false'
 outputs:
   overall_status:
     description: 'The status as string'
