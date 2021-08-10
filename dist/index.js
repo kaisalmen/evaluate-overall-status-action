@@ -6299,12 +6299,14 @@ async function run() {
 
         if (!ignoreTestReport && testReportConclusion === undefined || testReportConclusion === '') {
             throw {
+                status: 'Execution Error: Unknown test conclusion',
                 message: 'Provided test report conclusion is empty'
             }
         }
 
         if (jobStatus !== 'cancelled' && jobStatus !== 'success' && jobStatus !== 'failure') {
             throw {
+                status: 'Execution Error: Unknown job status',
                 message: 'Provided job status (' + jobStatus + ') is not correct.'
             }
         }
@@ -6332,7 +6334,7 @@ async function run() {
         core.setOutput('overall_status_color', outputStatusColor);
     }
     catch (error) {
-        core.setOutput('overall_status', 'Execution Error');
+        core.setOutput('overall_status', error.status);
         core.setOutput('overall_status_color', '#FF0000');
         core.setFailed(error.message);
     }
