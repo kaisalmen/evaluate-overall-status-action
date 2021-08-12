@@ -17,17 +17,17 @@ async function run() {
     console.log('Ignore Test Report: ' + ignoreTestReport);
 
     try {
-        if (!ignoreTestReport && (testReportConclusion === undefined || testReportConclusion === '')) {
-            throw {
-                status: 'Execution Error: Unknown test conclusion',
-                message: 'Provided test report conclusion is empty'
-            }
-        }
-
         if (jobStatus !== 'cancelled' && jobStatus !== 'success' && jobStatus !== 'failure') {
             throw {
                 status: 'Execution Error: Unknown job status',
                 message: 'Provided job status (' + jobStatus + ') is not correct.'
+            }
+        }
+
+        if (jobStatus !== 'cancelled' && !ignoreTestReport && (testReportConclusion === undefined || testReportConclusion === '')) {
+            throw {
+                status: 'Execution Error: Unknown test conclusion',
+                message: 'Provided test report conclusion is empty'
             }
         }
 
