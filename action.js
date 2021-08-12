@@ -2,21 +2,21 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 async function run() {
+    const jobStatus = core.getInput('job_status');
+    const testReportConclusion = core.getInput('test_report_conclusion');
+    const ignoreTestReport = core.getInput('ignore_test_report') === 'true';
+    const colorStable = core.getInput('color_stable');
+    const colorUnstable = core.getInput('color_unstable');
+    const colorFailed = core.getInput('color_failed');
+    const colorCancelled = core.getInput('color_cancelled');
+    const colorError = core.getInput('color_error');
+
+    console.log('Input:');
+    console.log('Job Status: ' + jobStatus);
+    console.log('Test Report Conclusion: ' + testReportConclusion);
+    console.log('Ignore Test Report: ' + ignoreTestReport);
+
     try {
-        const jobStatus = core.getInput('job_status');
-        const testReportConclusion = core.getInput('test_report_conclusion');
-        const ignoreTestReport = core.getInput('ignore_test_report') === 'true';
-        const colorStable = core.getInput('color_stable');
-        const colorUnstable = core.getInput('color_unstable');
-        const colorFailed = core.getInput('color_failed');
-        const colorCancelled = core.getInput('color_cancelled');
-        const colorError = core.getInput('color_error');
-
-        console.log('Input:');
-        console.log('Job Status: ' + jobStatus);
-        console.log('Test Report Conclusion: ' + testReportConclusion);
-        console.log('Ignore Test Report: ' + ignoreTestReport);
-
         if (!ignoreTestReport && (testReportConclusion === undefined || testReportConclusion === '')) {
             throw {
                 status: 'Execution Error: Unknown test conclusion',
