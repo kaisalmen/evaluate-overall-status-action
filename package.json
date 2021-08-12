@@ -1,6 +1,6 @@
 {
   "name": "evaluate-overall-status-action",
-  "version": "1.0.0",
+  "version": "2.0.0-dev",
   "description": "GitHub Action that evaluates the overall status including test results",
   "main": "dist/index.js",
   "scripts": {
