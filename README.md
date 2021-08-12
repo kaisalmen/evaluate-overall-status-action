@@ -3,9 +3,18 @@
 This action evaluate the overall status of a job considering the job status and the test results. The output provides a status as string and color.
 
 ## Inputs
-* `job_status`: Provide the current job status (default: `${{ job.status }`) **Required**
-* `test_report_conclusion`: Conclusion drawn by the test report action (default: `''`) **Required**
+
+**Required**:
+* `job_status`: Provide the current job status (default: `${{ job.status }`)
+* `test_report_conclusion`: Conclusion drawn by the test report action (default: `''`)
+
+**Optional**:
 * `ignore_test_report`: Ignore the test report in evaluation (default: `false`)
+* `color_stable`: Color for stable notification (default: `#007E1C`)
+* `color_unstable`: Color for unstable notification (default: `#E29C00`)
+* `color_failed`: Color for failed notification (default: `#AC0003`)
+* `color_cancelled`: Color for cancelled notification (default: `#666666`)
+* `color_error`: Color for error notification (default: `#660086`)
 
 ## Outputs
 

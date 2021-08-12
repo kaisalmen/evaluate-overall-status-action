@@ -6291,6 +6291,11 @@ async function run() {
         const jobStatus = core.getInput('job_status');
         const testReportConclusion = core.getInput('test_report_conclusion');
         const ignoreTestReport = core.getInput('ignore_test_report') === 'true';
+        const colorStable = core.getInput('color_stable');
+        const colorUnstable = core.getInput('color_unstable');
+        const colorFailed = core.getInput('color_failed');
+        const colorCancelled = core.getInput('color_cancelled');
+        const colorError = core.getInput('color_error');
 
         console.log('Input:');
         console.log('Job Status: ' + jobStatus);
@@ -6312,21 +6317,21 @@ async function run() {
         }
 
         let outputStatus = 'Cancelled';
-        let outputStatusColor = '#666666';
+        let outputStatusColor = colorCancelled;
         if (jobStatus !== 'cancelled') {
             if (jobStatus === 'success') {
                 if (testReportConclusion === "success" || ignoreTestReport) {
                     outputStatus = 'Stable';
-                    outputStatusColor = '#00FF00';
+                    outputStatusColor = colorStable;
                 }
                 else {
                     outputStatus = 'Unstable (Failed Tests)';
-                    outputStatusColor = '#FFFF00';
+                    outputStatusColor = colorUnstable;
                 }
             }
             else {
                 outputStatus = 'Failed';
-                outputStatusColor = '#FF0000';
+                outputStatusColor = colorFailed;
             }
         }
 
@@ -6335,7 +6340,7 @@ async function run() {
     }
     catch (error) {
         core.setOutput('overall_status', error.status);
-        core.setOutput('overall_status_color', '#4E0066');
+        core.setOutput('overall_status_color', colorError);
         core.setFailed(error.message);
     }
 }

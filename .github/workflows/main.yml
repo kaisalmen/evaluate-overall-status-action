@@ -1,6 +1,10 @@
 name: Slack Test
 
 on:
+  push:
+    branches:
+      - "dev"
+      - "master"
   workflow_dispatch:
 
 jobs:

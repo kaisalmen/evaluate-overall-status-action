@@ -13,6 +13,27 @@ inputs:
     description: 'Ignore the test report in evaluation'
     required: false
     default: 'false'
+  color_stable:
+    description: 'Color for stable notification'
+    required: false
+    default: '#007E1C'
+  color_unstable:
+    description: 'Color for unstable notification'
+    required: false
+    default: '#E29C00'
+  color_failed:
+    description: 'Color for failed notification'
+    required: false
+    default: '#AC0003'
+  color_cancelled:
+    description: 'Color for cancelled notification'
+    required: false
+    default: '#666666'
+  color_error:
+    description: 'Color for error notification'
+    required: false
+    default: '#660086'
+
 outputs:
   overall_status:
     description: 'The status as string'
