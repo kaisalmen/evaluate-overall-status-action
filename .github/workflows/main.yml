@@ -108,6 +108,21 @@ jobs:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_job_failure.outputs.overall_status }}
         color: ${{ steps.job_eval_job_failure.outputs.overall_status_color }}
-    - name: Make Green^
+    - name: Job Cancelled
+      id: job_eval_job_cancelled
+      if: ${{ always() }}
+      uses: kaisalmen/evaluate-overall-status-action@v1
+      with:
+        job_status: "cancelled"
+    - name: Notify Job Cancelled
+      if: ${{ always() }}
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      uses: voxmedia/github-action-slack-notify-build@v1
+      with:
+        channel_id: '#gha-testing'
+        status: ${{ steps.job_eval_job_cancelled.outputs.overall_status }}
+        color: ${{ steps.job_eval_job_cancelled.outputs.overall_status_color }}
+    - name: Make Green
       if: ${{ always() }}
       run: exit 0
