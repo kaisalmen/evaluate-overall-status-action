@@ -19,7 +19,7 @@ This action evaluate the overall status of a job considering the job status and 
 
 ## Outputs
 
-* `overall_status`: The status as string
+* `overall_status`: The status as string (stable, unstable, failed, cancelled)
 * `overall_status_color`: Color describing the status
 
 ### What outputs are possible?

@@ -26,7 +26,7 @@ async function run() {
             }
         }
 
-        if (jobStatus !== 'cancelled' && !ignoreTestReport && (testReportConclusion === undefined || testReportConclusion === '')) {
+        if (jobStatus !== 'cancelled' && !ignoreTestReport && testReportConclusion !== 'success' && testReportConclusion !== 'failure') {
             throw {
                 status: 'Execution Error: Unknown test conclusion',
                 message: 'Provided test report conclusion is empty'
