@@ -10,6 +10,7 @@ This action evaluate the overall status of a job considering the job status and 
 
 **Optional**:
 * `ignore_test_report`: Ignore the test report in evaluation (default: `false`)
+* `fail_on_failed_tests`: Fail on failed tests (default: `false`)
 * `color_stable`: Color for stable notification (default: `#007E1C`)
 * `color_unstable`: Color for unstable notification (default: `#E29C00`)
 * `color_failed`: Color for failed notification (default: `#AC0003`)

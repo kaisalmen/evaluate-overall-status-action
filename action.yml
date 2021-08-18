@@ -13,6 +13,10 @@ inputs:
     description: 'Ignore the test report in evaluation'
     required: false
     default: 'false'
+  fail_on_failed_tests:
+    description: 'Fail on failed tests'
+    required: false
+    default: 'false'
   color_stable:
     description: 'Color for stable notification'
     required: false
