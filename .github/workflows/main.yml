@@ -11,12 +11,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: nelonoel/branch-name@v1.0.1
     - name: No Job Status
       id: job_eval_no_job_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         ignore_test_report: true
     - name: Notify No Job Status
@@ -31,7 +31,7 @@ jobs:
     - name: Wrong Job Status
       id: job_eval_wrong_job_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "cheese"
         ignore_test_report: true
@@ -47,7 +47,7 @@ jobs:
     - name: Test Report Error
       id: job_eval_test_error
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "success"
         test_report_conclusion: ""
@@ -63,7 +63,7 @@ jobs:
     - name: Report Wrong
       id: job_eval_test_report_wrong
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "success"
         test_report_conclusion: "sausage"
@@ -79,7 +79,7 @@ jobs:
     - name: Job Success
       id: job_eval_job_success
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "success"
         test_report_conclusion: "success"
@@ -95,7 +95,7 @@ jobs:
     - name: Job Failure
       id: job_eval_job_failure
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "failure"
         test_report_conclusion: "success"
@@ -111,7 +111,7 @@ jobs:
     - name: Test Failure Unstable Status
       id: job_eval_test_failure_unstable_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "success"
         test_report_conclusion: "failure"
@@ -127,7 +127,7 @@ jobs:
     - name: Test Failure Failed Status
       id: job_eval_job_failure_failed_status
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "success"
         test_report_conclusion: "failure"
@@ -144,7 +144,7 @@ jobs:
     - name: Job Cancelled
       id: job_eval_job_cancelled
       if: ${{ always() }}
-      uses: kaisalmen/evaluate-overall-status-action@v1
+      uses: kaisalmen/evaluate-overall-status-action@v2
       with:
         job_status: "cancelled"
     - name: Notify Job Cancelled

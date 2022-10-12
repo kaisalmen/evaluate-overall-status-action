@@ -44,5 +44,5 @@ outputs:
   overall_status_color:
     description: 'Color describing the status'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'
