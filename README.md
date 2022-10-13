@@ -46,14 +46,8 @@ with:
 
 ## Rebuild Action
 
-If not yet available install `vercel/ncc` by running this command in your terminal:
+Use the following command to regenerate `dist/index.js`:
 
 ```shell
-npm i -g @vercel/ncc
-```
-
-Afterwards use the following command to regenerate `dist/index.js`:
-
-```shell
-ncc build action.js --license license.txt
+ncc run build
 ```
