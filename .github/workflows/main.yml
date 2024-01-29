@@ -11,7 +11,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 20
     - name: npm install and build
       run: |
         npm ci
@@ -26,7 +29,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_no_job_status.outputs.overall_status }}
@@ -42,7 +45,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_wrong_job_status.outputs.overall_status }}
@@ -58,7 +61,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_test_error.outputs.overall_status }}
@@ -74,7 +77,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_test_report_wrong.outputs.overall_status }}
@@ -90,7 +93,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_job_success.outputs.overall_status }}
@@ -106,7 +109,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_job_failure.outputs.overall_status }}
@@ -122,7 +125,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_test_failure_unstable_status.outputs.overall_status }}
@@ -139,7 +142,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_job_failure_failed_status.outputs.overall_status }}
@@ -154,7 +157,7 @@ jobs:
       if: ${{ always() }}
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: kaisalmen/github-action-slack-notify-build@v2
+      uses: kaisalmen/github-action-slack-notify-build@v3
       with:
         channel_id: '#gha-testing'
         status: ${{ steps.job_eval_job_cancelled.outputs.overall_status }}
